@@ -1,48 +1,28 @@
-Convolutional Recurrent Neural Network
-======================================
+# 📝 Hệ Thống Nhận Dạng Chữ Viết (OCR) - CRNN & Streamlit
 
-This software implements the Convolutional Recurrent Neural Network (CRNN) in pytorch.
-Origin software could be found in [crnn](https://github.com/bgshih/crnn)
+Đây là đồ án môn học ứng dụng Trí tuệ Nhân tạo để xây dựng hệ thống nhận dạng chữ viết (Optical Character Recognition - OCR). Dự án sử dụng kiến trúc mô hình **CRNN (CNN + RNN + CTC Loss)** kết hợp với giao diện Web tương tác trực quan.
 
-Run demo
---------
-A demo program can be found in ``demo.py``. Before running the demo, download a pretrained model
-from [Baidu Netdisk](https://pan.baidu.com/s/1pLbeCND) or [Dropbox](https://www.dropbox.com/s/dboqjk20qjkpta3/crnn.pth?dl=0). 
-This pretrained model is converted from auther offered one by ``tool``.
-Put the downloaded model file ``crnn.pth`` into directory ``data/``. Then launch the demo by:
+## 🌟 Tính Năng Nổi Bật
 
-    python demo.py
+* **Lõi AI Mạnh Mẽ:** Sử dụng PyTorch để huấn luyện mô hình CRNN trên tập dữ liệu LMDB, đạt độ chính xác cao (~98%) trong việc nhận dạng chuỗi ký tự.
+* **Giao Diện Web Thân Thiện:** Tích hợp `Streamlit` cho phép người dùng dễ dàng tải ảnh lên và nhận kết quả tức thì ngay trên trình duyệt mà không cần sử dụng dòng lệnh.
+* **Tối Ưu Hóa Thiết Bị:** Hệ thống tự động nhận diện và sử dụng Card đồ họa (GPU/CUDA) nếu có để tăng tốc độ suy luận, hoặc chạy mượt mà trên CPU.
 
-The demo reads an example image and recognizes its text content.
+## 🛠️ Cài Đặt Môi Trường
 
-Example image:
-![Example Image](./data/demo.png)
+**Bước 1:** Clone kho chứa này về máy:
+```bash
+git clone [https://github.com/hynanhat/OCR.git](https://github.com/hynanhat/OCR.git)
+cd OCR
 
-Expected output:
-    loading pretrained model from ./data/crnn.pth
-    a-----v--a-i-l-a-bb-l-ee-- => available
+Bước 2: Cài đặt các thư viện cần thiết:
 
-Dependence
-----------
-* [warp_ctc_pytorch](https://github.com/SeanNaren/warp-ctc/tree/pytorch_bindings/pytorch_binding)
-* lmdb
+pip install -r requirements.txt
 
-Train a new model
------------------
-1. Construct dataset following [origin guide](https://github.com/bgshih/crnn#train-a-new-model). If you want to train with variable length images (keep the origin ratio for example), please modify the `tool/create_dataset.py` and sort the image according to the text length.
-2. Execute ``python train.py --adadelta --trainRoot {train_path} --valRoot {val_path} --cuda``. Explore ``train.py`` for details.
+Hướng Dẫn Sử Dụng
 
-Cite
-----
-```tex
-@article{shi2016end,
-  title={An end-to-end trainable neural network for image-based sequence recognition and its application to scene text recognition},
-  author={Shi, Baoguang and Bai, Xiang and Yao, Cong},
-  journal={IEEE transactions on pattern analysis and machine intelligence},
-  volume={39},
-  number={11},
-  pages={2298--2304},
-  year={2016},
-  publisher={IEEE}
-}
-```
+Cách 1: Chạy Giao diện Web (Khuyên dùng)
+Sử dụng lệnh sau để khởi động trang web trên trình duyệt:
+
+streamlit run app.py
+
